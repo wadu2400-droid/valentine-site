@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Valentine 💛</title>
+
+
+
+  <style>
+
+    body {
+
+      margin: 0;
+
+      font-family: "Comic Sans MS", cursive;
+
+      background: linear-gradient(to bottom, #FFF9E3, #fff);
+
+      text-align: center;
+
+    }
+
+
+
+    h1 {
+
+      margin-top: 50px;
+
+      font-size: 2.5rem;
+
+      color: ##ff4d88;
+
+    }
+
+
+
+    video {
+
+      width: 300px;
+
+      margin: 20px auto;
+
+      border-radius: 20px;
+
+      box-shadow: 0px 5px 20px rgba(0,0,0,0.2);
+
+    }
+
+
+
+    button {
+
+      padding: 15px 30px;
+
+      font-size: 1.2rem;
+
+      border: none;
+
+      border-radius: 20px;
+
+      cursor: pointer;
+
+      margin: 10px;
+
+      transition: 0.3s;
+
+    }
+
+
+
+    #yesBtn {
+
+      background: #ff4d88;
+
+      color: white;
+
+    }
+
+
+
+    #noBtn {
+
+      background: #ffd966;
+
+      color: black;
+
+    }
+
+
+
+    #message {
+
+      font-size: 2rem;
+
+      color: #ff4d88;
+
+      margin-top: 30px;
+
+      display: none;
+
+    }
+
+  </style>
+
+</head>
+
+
+
+<body>
+
+
+
+  <h1 id="question">Will you be my Valentine? 💌</h1>
+
+
+
+  <!-- Minion Video -->
+
+  <video id="vid" autoplay loop muted>
+
+    <source src="Download.mp4" type="video/mp4">
+
+  </video>
+
+
+
+  <!-- Background Music -->
+
+  <audio id="music" loop>
+
+    <source src="music.mp3" type="audio/mpeg">
+
+  </audio>
+
+
+
+
+
+  </p>
+
+
+
+  <div>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 💖</button>
+
+    <button id="noBtn" onclick="noClicked()">No 🙈</button>
+
+  </div>
+
+
+
+  <div id="message">I knew you'll say yes hehe 💕🎆</div>
+
+
+
+  <script>
+
+    // Start music on first click (browser requirement)
+
+    document.body.addEventListener("click", function () {
+
+      document.getElementById("music").play();
+
+    }, { once: true });
+
+
+
+    let noCount = 0;
+
+    let yesSize = 1;
+
+
+
+    const noTexts = [
+
+      "Are you sure? 😢",
+
+      "Are you really sure?? 🥺",
+
+      "Please pleasee just click yesssssss 😭",
+
+      "Come onnn 💛",
+
+      "Okay last chance 😳"
+
+    ];
+
+
+
+    function noClicked() {
+
+      const noBtn = document.getElementById("noBtn");
+
+      const yesBtn = document.getElementById("yesBtn");
+
+      const question = document.getElementById("question");
+
+
+
+      if (noCount < noTexts.length) {
+
+        question.innerHTML = noTexts[noCount];
+
+      }
+
+
+
+      yesSize += 0.5;
+
+      yesBtn.style.transform = `scale(${yesSize})`;
+
+
+
+      noCount++;
+
+
+
+      if (noCount > noTexts.length) {
+
+        noBtn.style.display = "none";
+
+        question.innerHTML = "Only YES left now 😏💖";
+
+      }
+
+    }
+
+
+
+    function yesClicked() {
+
+      const vid = document.getElementById("vid");
+
+      const message = document.getElementById("message");
+
+
+
+      // Switch to fireworks GIF/video
+
+      vid.outerHTML = `
+
+        <img src="fire.gif"
+
+             width="600px; max-width: 95%;"
+
+             style="border-radius:20px; margin-top:20px;" />
+
+      `;
+
+
+
+      document.getElementById("question").innerHTML = "YAYYYYY 🎉💛";
+
+      document.getElementById("noBtn").style.display = "none";
+
+      document.getElementById("yesBtn").style.display = "none";
+
+
+
+      message.style.display = "block";
+
+    }
+
+  </script>
+
+
+
+</body>
+
+</html>
